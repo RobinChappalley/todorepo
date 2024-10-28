@@ -1,7 +1,7 @@
 <?php
 
 // The base path under which the application is exposed.
-define('BASE_URL', 'index.php');
+define('BASE_URL', '/');
 
 // Database connection parameters.
 define('DB_USER', 'todolist');
