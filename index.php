@@ -1,7 +1,7 @@
 <?php
 
 // The base path under which the application is exposed.
-define('BASE_URL', '/');
+define('BASE_URL', getenv(TODOLIST_BASE_URL')?: '/');
 
 // Database connection parameters.
 define('DB_USER', 'todolist');
