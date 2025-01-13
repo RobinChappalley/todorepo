@@ -1,4 +1,13 @@
 name: todolist
 #description "A simple todo list application";
 services:
-db:
+  db:
+    image: mysql:5.7.24
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todolist
+      MYSQL_USER: todolist
+      MYSQL_PASSWORD: todolist
+    volumes:
+      - ./todolist.sql:/docker-entrypoint-initdb.d/todolist.sql
