@@ -11,3 +11,22 @@ services:
       MYSQL_PASSWORD: todolist
     volumes:
       - ./todolist.sql:/docker-entrypoint-initdb.d/todolist.sql
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: bitnami/php-fpm
+    depends_on:
+      - db
+    environment:
+      PHP_FPM_LISTEN_PORT: 9000
+    restart: always
+  rp:
+    image: nginx:stable-alpine3.20-perl
+    depends_on:
+      - app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/opt/bitnami/nginx/conf/server_blocks/default.conf
+    restart: always
