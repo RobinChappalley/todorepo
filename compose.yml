@@ -11,6 +11,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./todolist.sql:/docker-entrypoint-initdb.d/todolist.sql
+      - ./data:/var/lib/mysql
   app:
     build:
       context: .
