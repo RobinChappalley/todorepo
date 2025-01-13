@@ -5,10 +5,10 @@ services:
     image: mysql:5.7.24
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: todolist
       MYSQL_USER: todolist
-      MYSQL_PASSWORD: todolist
+      MYSQL_PASSWORD:
     volumes:
       - ./todolist.sql:/docker-entrypoint-initdb.d/todolist.sql
   app:
@@ -20,6 +20,10 @@ services:
       - db
     environment:
       PHP_FPM_LISTEN_PORT: 9000
+      TODOLIST_DB_HOST: db
+      TODOLIST_DB_NAME: todolist
+      TODOLIST_DB_USER: todolist
+      TODOLIST_DB_PASSWORD:
     restart: always
   rp:
     image: nginx:stable-alpine3.20-perl
